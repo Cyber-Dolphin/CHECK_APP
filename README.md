@@ -22,5 +22,3 @@ gsfId = int("My android ID")
 authSubToken = "My token"
 
 Файл из Google Play скачивается и проверяется в директории запуска скрипта.
-
-Локальный файл расположите в директории local_app.
