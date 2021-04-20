@@ -125,7 +125,7 @@ dmypy.json
 .pyre/
 
 # Main gnore
-!local_app/
+!local_app
 local_app/*.apk
-!variable_app/
+!variable_app
 variable_app/var_app.py
