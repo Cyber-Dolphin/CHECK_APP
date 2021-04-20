@@ -3,7 +3,8 @@
 
 from apk_parse3.apk import APK
 from gpapi.googleplay import GooglePlayAPI
-from variable_app.var_app import package, gsfId, authSubToken
+from variable_app.var_app import gsfId, authSubToken, cloud_app, local_app
+
 
 def GET_APP(gsfId, authSubToken, package):
     server = GooglePlayAPI("it_IT", "Europe/Rome")
@@ -31,8 +32,6 @@ def DATA_APP(package):
     return data_app
 
 def CHECK_APP():
-    cloud_app = "ru.mts.money"
-    local_app = "local_app/ru.mts.money"
     data_android_cloud = DATA_APP(cloud_app)
     data_android_local = DATA_APP(local_app)
     count = len(data_android_local)
@@ -67,22 +66,22 @@ def REPORT_APP():
     for i in range(count):
         if i == 0:
             if report[i] == 0:
-                print("Размер файла не совпадает")
+                print("\nРазмер файла из Google Play не совпадает с локальным файлом.\n")
             else:
-                print("Размер файла совпадает")
+                print("\nРазмер файла из Google Play совпадает с локальным файлом.\n")
         elif i == 1:
             if report[i] == 0:
-                print("Хэш-сумма файла не совпадает")
+                print("\nХэш-сумма файла из Google Play не совпадает с локальным файлом.\n")
             else:
-                print("Хэш-сумма файла совпадает")
+                print("\nХэш-сумма файла из Google Play совпадает с локальным файлом.\n")
         else:
             if report[i] == 0:
-                print("Версия файла не совпадает")
+                print("\nВерсия файла из Google Play не совпадает с локальным файлом.\n")
             else:
-                print("Версия файла совпадает")
+                print("\nВерсия файла из Google Play совпадает с локальным файлом.\n")
 
 
 
 if __name__ == "__main__":
-    GET_APP(gsfId, authSubToken, package)
+    GET_APP(gsfId, authSubToken, cloud_app)
     REPORT_APP()
